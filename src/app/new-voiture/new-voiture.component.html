@@ -1,0 +1,31 @@
+<form class="container col mt-4 col-md-6" name="form" (ngSubmit)="f.form.valid && saveVoiture()" #f="ngForm" novalidate>
+  <div *ngIf="!submitted">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="marque">Marque</label>
+        <input type="text" class="form-control" id="marque" name="marque" required #marque="ngModel" [(ngModel)]="vehicule.marque" placeholder="Marque de la voiture...">
+        <div class="alert alert-danger" role="alert" *ngIf="marque.errors && f.submitted">
+          Ce champ est obligatoire
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" name="type" [(ngModel)]="vehicule.type" placeholder="Type de la voiture...">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="couleur">Couleur</label>
+        <input type="text" class="form-control" id="couleur" name="couleur" [(ngModel)]="vehicule.couleur" placeholder="Couleur de la voiture...">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="numero">Numéro</label>
+        <input type="text" class="form-control" id="numero" name="numero" required #numero="ngModel" [(ngModel)]="vehicule.numero" placeholder="Numéro de la voiture..." >
+        <div class="alert alert-danger" role="alert" *ngIf="numero.errors && f.submitted">
+          Ce champ est obligatoire
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+  </div>
+</form>

@@ -1,0 +1,57 @@
+<div class="container col mt-4 col-md-12">
+  <div class="text-center">
+    <div *ngIf="details" class="body">
+      <h3>Marque: {{details.voiture[0].marque}}</h3>
+      <h6>Numéro: {{details.voiture[0].numero}}</h6>
+      <h6>Couleur: {{details.voiture[0].couleur}}</h6>
+      <h6>Type: {{details.voiture[0].type}}</h6>
+      <div *ngIf="isLoggedIn">
+        <a class="btn btn-primary" data-toggle="modal" data-target="#modalForComment">Commenter</a>
+      </div>
+
+      <!-- Liste commentaires -->
+      <div class="row d-flex justify-content-center mt-100 mb-100 col mt-4" *ngIf="isLoggedIn">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Liste des commentaires</h4>
+                </div>
+                <div class="comment-widgets">
+                    <div *ngFor="let com of details.comments" class="d-flex flex-row comment-row m-t-0">
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">{{com.nomUtilisateur}}</h6> <span class="m-b-15 d-block">{{com.contenu}}</span>
+                            <div class="comment-footer"> <span class="text-muted float-right">{{com.dateComment |date:'MM/dd/yyyy à HH:mm:ss'}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<!-------- Modal ----------->
+<div class="modal fade" id="modalForComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Commentaire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Insérerez ici votre commentaire:</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.contenu"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveComment()" data-dismiss="modal">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+

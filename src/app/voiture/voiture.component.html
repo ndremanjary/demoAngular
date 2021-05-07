@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div class="container col mt-4 col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+                    <table  class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Marque</th><th>Numéro de vehicule</th><th>Couleur</th><th>Type de vehicule</th><th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let v of vehicules">
+                            <tr>
+                                <td>{{v.marque}}</td>
+                                <td>{{v.numero}}</td>
+                                <td>{{v.couleur}}</td>
+                                <td>{{v.type}}</td>
+                                <!-- <td>{{v.comments.contenu}}</td> -->
+                                <td>
+                                    <button routerLink="/comment/{{v.idVoiture}}" class="btn btn-info">Détail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
